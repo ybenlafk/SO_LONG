@@ -6,7 +6,7 @@
 /*   By: ybenlafk <ybenlafk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:13:57 by ybenlafk          #+#    #+#             */
-/*   Updated: 2023/01/08 12:23:33 by ybenlafk         ###   ########.fr       */
+/*   Updated: 2023/01/08 13:03:46 by ybenlafk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,6 @@ typedef struct var
     void    *img5;
     void    *img6;
     void    *img7;
-    void    *coin0;
-    void    *coin1;
-    void    *coin2;
-    void    *coin3;
-    void    *coin4;
-    void    *coin5;
-    void    *coin6;
-    void    *coin7;
-    void    *coin8;
-    void    *coin9;
     char    *map[10000];
     char	*dest[10000];
     void	*coins[10000];

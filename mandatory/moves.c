@@ -6,7 +6,7 @@
 /*   By: ybenlafk <ybenlafk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 23:39:17 by ybenlafk          #+#    #+#             */
-/*   Updated: 2023/01/07 15:45:53 by ybenlafk         ###   ########.fr       */
+/*   Updated: 2023/01/08 13:58:33 by ybenlafk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	move_up(t_var *p)
 		return (1);
 	}
 	else if (p->map[x - 1][y] == 'E' && !check_Col(p->map))
-		exit(0);
+		return(putstrr("you win the game 🥳.\n"), exit(0), 0);
 	return (0);
 }
 
@@ -54,7 +54,7 @@ int	move_down(t_var *p)
 		return (1);
 	}
 	else if (p->map[x + 1][y] == 'E' && !check_Col(p->map))
-		exit(0);
+		return(putstrr("you win the game 🥳.\n"), exit(0), 0);
 	return (0);
 }
 
@@ -77,7 +77,7 @@ int	move_right(t_var *p)
 		return (1);
 	}
 	else if (p->map[x][y + 1] == 'E' && !check_Col(p->map))
-		exit(0);
+		return(putstrr("you win the game 🥳.\n"), exit(0), 0);
 	return (0);
 }
 
@@ -100,7 +100,7 @@ int	move_left(t_var *p)
 		return (1);
 	}
 	else if (p->map[x][y - 1] == 'E' && !check_Col(p->map))
-		exit(0);
+		return(putstrr("you win the game 🥳.\n"), exit(0), 0);
 	return (0);
 }
 

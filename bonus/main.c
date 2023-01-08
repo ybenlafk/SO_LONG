@@ -6,15 +6,13 @@
 /*   By: ybenlafk <ybenlafk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:13:07 by ybenlafk          #+#    #+#             */
-/*   Updated: 2023/01/08 12:54:40 by ybenlafk         ###   ########.fr       */
+/*   Updated: 2023/01/08 13:56:47 by ybenlafk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-
-
-int	ft_trace_map(t_var *p)
+int	usys(t_var *p)
 {
     char *s;
 
@@ -28,6 +26,13 @@ int	ft_trace_map(t_var *p)
     s = ft_itoa(p->moves);
 	mlx_string_put(p->mlx, p->mlx_win, 20, 20, 10, s);
 	return (free(s), 0);
+}
+
+int ft_close(t_var *p, int key)
+{
+    (void)p;
+    (void)key;
+    exit(0);
 }
 
 int main(int ac, char **av)
@@ -47,8 +52,9 @@ int main(int ac, char **av)
     fill_assets(&p);
     fill_others(&p);
     fill_coins(&p);
-    mlx_loop_hook(p.mlx, ft_trace_map, &p);
+    mlx_loop_hook(p.mlx, usys, &p);
     mlx_hook(p.mlx_win, 2, 0, event_key, &p);
+    mlx_hook(p.mlx_win,17, 0, ft_close, &p);
 	mlx_loop(p.mlx);
     return (0);
 }

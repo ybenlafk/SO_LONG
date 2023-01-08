@@ -6,15 +6,13 @@
 /*   By: ybenlafk <ybenlafk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:13:07 by ybenlafk          #+#    #+#             */
-/*   Updated: 2023/01/08 12:57:37 by ybenlafk         ###   ########.fr       */
+/*   Updated: 2023/01/08 13:57:38 by ybenlafk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-
-
-int	ft_trace_map(t_var *p)
+int	usys(t_var *p)
 {
 	mlx_clear_window(p->mlx, p->mlx_win);
 	fill_assets(p);
@@ -22,6 +20,13 @@ int	ft_trace_map(t_var *p)
     if (!p->coll)
 		fill_dor(p);
 	return (0);
+}
+
+int ft_close(t_var *p, int key)
+{
+    (void)p;
+    (void)key;
+    exit(0);
 }
 
 int main(int ac, char **av)
@@ -40,8 +45,9 @@ int main(int ac, char **av)
     set_imgs(&p);
     fill_assets(&p);
     fill_others(&p);
-    mlx_loop_hook(p.mlx, ft_trace_map, &p);
+    mlx_loop_hook(p.mlx, usys, &p);
     mlx_hook(p.mlx_win, 2, 0, event_key, &p);
+    mlx_hook(p.mlx_win,17, 0, ft_close, &p);
 	mlx_loop(p.mlx);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ybenlafk <ybenlafk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 17:08:37 by ybenlafk          #+#    #+#             */
-/*   Updated: 2023/01/07 15:45:56 by ybenlafk         ###   ########.fr       */
+/*   Updated: 2023/01/08 14:00:01 by ybenlafk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ int    parsing(t_var *p)
     y = 0;
     p->len = countLines(p->filename);
     if (!p->len || ft_strcmp(".ber", p->filename + (ftstrlen(p->filename) - 4)))
-        return(perror(""), exit(0), 0);
+        return(putstrr("Error\n"), exit(0), 0);
     p->fd = open(p->filename, O_RDONLY);
     if (p->fd == -1)
-        return(perror(""), exit(-1), 0);
+        return(putstrr("Error\n"), exit(-1), 0);
     p->i = 0;
     while (p->i <= p->len)
         p->map[p->i++] = get_next_line(p->fd);
@@ -76,6 +76,6 @@ int    parsing(t_var *p)
     if (!check_wall(p->map) || !is_equal_lines(p->map, ftstrlen(p->map[0]), countLines(p->filename))
         || !check_content(p->map, 'E') || !check_content(p->map, 'P')
         || !check_Col(p->map) || !back_tracking(p, x, y))
-            return(perror(""), exit(0), 0);
+            return(putstrr("Error\n"), exit(0), 0);
     return (1);
 }
