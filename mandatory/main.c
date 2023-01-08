@@ -6,7 +6,7 @@
 /*   By: ybenlafk <ybenlafk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:13:07 by ybenlafk          #+#    #+#             */
-/*   Updated: 2023/01/07 15:45:50 by ybenlafk         ###   ########.fr       */
+/*   Updated: 2023/01/08 12:57:37 by ybenlafk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	ft_trace_map(t_var *p)
 		fill_dor(p);
 	return (0);
 }
-
 
 int main(int ac, char **av)
 {
