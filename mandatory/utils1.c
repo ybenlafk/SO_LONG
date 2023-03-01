@@ -6,63 +6,63 @@
 /*   By: ybenlafk <ybenlafk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 12:52:50 by ybenlafk          #+#    #+#             */
-/*   Updated: 2023/01/08 14:08:45 by ybenlafk         ###   ########.fr       */
+/*   Updated: 2023/01/08 16:49:00 by ybenlafk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int is_equal_lines(char **map, int len_line, int len)
+int	equal(char **map, int len_line, int len)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i <= len)
-        if (len_line != ftstrlen(map[i++]))
-            return (0);
-    return (1);
+	i = 0;
+	while (i <= len)
+		if (len_line != ln(map[i++]))
+			return (0);
+	return (1);
 }
 
-int check_content(char **map, char c)
+int	check_content(char **map, char c)
 {
-    int i;
-    int j;
-    int count;
+	int	i;
+	int	j;
+	int	count;
 
-    i = 0;
-    count = 0;
-    while (map[i])
-    {
-        j = 0;
-        while (map[i][j])
-            if (map[i][j++] == c)
-                count++;
-        i++;
-    }
-    if (count == 1)
-        return (1);
-    return (0);
+	i = 0;
+	count = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+			if (map[i][j++] == c)
+				count++;
+		i++;
+	}
+	if (count == 1)
+		return (1);
+	return (0);
 }
 
-int check_Col(char **map)
+int	check_col(char **map)
 {
-    int i;
-    int j;
-    int count;
+	int	i;
+	int	j;
+	int	count;
 
-    i = 0;
-    count = 0;
-    while (map[i])
-    {
-        j = 0;
-        while (map[i][j])
-            if (map[i][j++] == 'C')
-                count++;
-        i++;
-    }
-    if (count == 0)
-        return (0);
-    return (count);
+	i = 0;
+	count = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+			if (map[i][j++] == 'C')
+				count++;
+		i++;
+	}
+	if (count == 0)
+		return (0);
+	return (count);
 }
 
 void	freeallstr(char **str)

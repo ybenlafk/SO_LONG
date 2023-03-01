@@ -1,42 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybenlafk <ybenlafk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 14:51:13 by ybenlafk          #+#    #+#             */
-/*   Updated: 2023/02/14 17:17:59 by ybenlafk         ###   ########.fr       */
+/*   Created: 2023/01/08 16:40:38 by ybenlafk          #+#    #+#             */
+/*   Updated: 2023/01/08 22:17:39 by ybenlafk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-char	*get_next_line(int fd)
+void	move(t_var *p, int (*mv)(t_var *))
 {
-	int		i;
-	int		rd;
-	char	c;
-	char	*buffer;
+	p->l = mv(p);
+	p->moves += p->l;
+	if (p->l)
+		print_moves(p);
+}
+
+int	check_path(t_var *p)
+{
+	int	i;
+	int	j;
 
 	i = 0;
-	rd = 0;
-	buffer = malloc(100000);
-	if (!buffer)
-		exit(0);
-	rd = read(fd, &c, 1);
-	while (rd > 0)
+	while (p->map[i])
 	{
-		buffer[i++] = c;
-		if (c == '\n')
-			break ;
-		rd = read(fd, &c, 1);
+		j = 0;
+		while (p->map[i][j] && p->map[i][j] != '\n')
+		{
+			if (p->map[i][j] != '0' && p->map[i][j] != '1'
+				&& p->map[i][j] != 'P' && p->map[i][j] != 'C'
+				&& p->map[i][j] != 'E')
+				return (0);
+			j++;
+		}
+		i++;
 	}
-	if ((!buffer[i - 1] && !rd) || rd == -1)
-	{
-		free(buffer);
-		return (NULL);
-	}
-	buffer[i] = '\0';
-	return (buffer);
+	return (1);
 }
